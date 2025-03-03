@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习记录</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .summary {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 800px;
+        }
+        .summary h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+            color: #ff7e5f;
+        }
+        .summary p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .record {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+        .record h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .record p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="summary">
+        <h2>学习总结</h2>
+        <p>每周平均学习时间：{{ average_time  | round(3)}} 小时</p>
+        <p>总学习时间：{{ total_time  | round(3)}} 小时</p>
+        <p>总天数：{{ total_days }} 天</p>
+    </div>
+    {% for record in records %}
+    <div class="record">
+        <h3>记录 {{ record.id }}</h3>
+        <p>开始时间：{{ record[1] }}</p>
+        <p>结束时间：{{ record[2] }}</p>
+        <p>学习时间：{{ (record[3] / 3600 )| round(3) }} 小时</p>
+    </div>
+    {% endfor %}
+</body>
+</html>
