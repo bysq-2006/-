@@ -80,4 +80,4 @@ def list_records():
     return render_template('list.html', records=records, total_time=total_time / 3600, average_time=average_time / 3600, total_days=total_days)
 
 if __name__ == '__main__':
-    app.run(debug=False)  # 如果设置为True，调度器会每秒执行两次
+    app.run(debug=False,host=0.0.0.0)  # 如果设置为True，调度器会每秒执行两次
