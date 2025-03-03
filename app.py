@@ -129,6 +129,12 @@ def list_records():
         start_time, end_time = cursor.fetchone()
         total_days = (end_time - start_time).days if start_time and end_time else 0
 
+        # 检查 total_time 和 average_time 是否为 None
+        if total_time is None:
+            total_time = 0
+        if average_time is None:
+            average_time = 0
+
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         records = []
@@ -142,4 +148,4 @@ def list_records():
     return render_template('list.html', records=records, total_time=total_time / 3600, average_time=average_time / 3600, total_days=total_days)
 
 if __name__ == '__main__':
-    app.run(debug=False,host="0.0.0.0")  # 如果设置为True，调度器会每秒执行两次
+    app.run(debug=False, host='0.0.0.0')  # 如果设置为True，调度器会每秒执行两次
